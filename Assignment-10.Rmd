@@ -23,10 +23,7 @@ df <- read_delim("State_Employee_Payroll_Data_Calendar_Year_2015_through_Present
     "\t", escape_double = FALSE, trim_ws = TRUE)
 
 str(df)
-employID <- unique(df$EmplId.Empl.Rcd)
-sample <- sample(employID, 8500)
-raw <- df[df$EmplId.Empl.Rcd %in% sample, ] %>% droplevels()
-str(raw)
+
 ```
 
 ```{r}
