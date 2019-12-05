@@ -1,0 +1,36 @@
+---
+title: "Assignment 10"
+author: "Matthew Questad"
+date: "12/2/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Download file
+```{r}
+# download.file("https://sdsu.box.com/shared/static/neaac6yoqx9e9x4j8391lzozzy1949p7.zip", destfile = "salary.zip")
+
+# system("unzip salary.zip")
+```
+
+## Read File
+```{r}
+library(readr)
+df <- read_delim("State_Employee_Payroll_Data_Calendar_Year_2015_through_Present.tsv", 
+    "\t", escape_double = FALSE, trim_ws = TRUE)
+
+str(df)
+employID <- unique(df$EmplId.Empl.Rcd)
+sample <- sample(employID, 8500)
+raw <- df[df$EmplId.Empl.Rcd %in% sample, ] %>% droplevels()
+str(raw)
+```
+
+```{r}
+summary(df)
+barplot(table(df$`Pyrl Fiscal Yr`))
+```
+
